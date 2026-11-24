@@ -1,0 +1,17 @@
+
+baseURL = 'https://pedroescribano714.github.io/saludtech/'
+defaultContentLanguage = 'es'
+locale = 'es-ES'
+title = 'SaludTech'
+theme = ''
+
+disableKinds = ['taxonomy', 'term']
+
+[params]
+  description = 'Blog sobre Tecnologías y Sistemas en Sanidad'
+  author = 'SaludTech'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false

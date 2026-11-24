@@ -1,0 +1,92 @@
+
+{{ define "main" }}
+
+<!-- SECCIÓN DE PRESENTACIÓN -->
+
+<section class="hero">
+    <div class="contenedor">
+
+        <h2>
+            Innovación tecnológica al servicio de la salud
+        </h2>
+
+        <p>
+            Bienvenidos a SaludTech, un espacio dedicado
+            a explorar cómo las tecnologías de la
+            información están transformando los
+            sistemas sanitarios.
+        </p>
+
+        <a href="#articulos" class="boton">
+            Explorar artículos
+        </a>
+
+    </div>
+</section>
+
+<!-- LISTADO AUTOMÁTICO DE ARTÍCULOS -->
+
+<section id="articulos" class="seccion-articulos">
+    <div class="contenedor">
+
+        <h2>Últimos artículos</h2>
+
+        <div class="grid-articulos">
+
+            {{ range (where .Site.RegularPages "Section" "articulos").ByWeight }}
+
+            <article class="tarjeta">
+
+                
+<!-- Imagen del artículo -->
+{{ $articulo := . }}
+
+{{ with .Params.image }}
+    {{ if fileExists (printf "static/%s" .) }}
+
+        <img class="imagen-tarjeta"
+             src="{{ . | relURL }}"
+             alt="{{ $articulo.Params.imageAlt }}"
+             loading="lazy">
+
+    {{ else }}
+
+        <div class="imagen-pendiente"
+             aria-hidden="true">
+            SaludTech
+        </div>
+
+    {{ end }}
+{{ end }}
+
+
+                <div class="contenido-tarjeta">
+
+                    <p class="fecha">
+                        {{ .Date.Format "02/01/2006" }}
+                    </p>
+
+                    <h3>{{ .Title }}</h3>
+
+                    <p class="resumen">
+                        {{ .Description }}
+                    </p>
+
+                    <a class="enlace-articulo"
+                       href="{{ .RelPermalink }}"
+                       aria-label="Leer artículo: {{ .Title }}">
+                        Leer artículo &rarr;
+                    </a>
+
+                </div>
+
+            </article>
+
+            {{ end }}
+
+        </div>
+
+    </div>
+</section>
+
+{{ end }}

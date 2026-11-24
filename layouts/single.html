@@ -1,0 +1,53 @@
+
+{{ define "main" }}
+
+<div class="contenedor">
+
+    <article class="articulo-completo">
+
+        <!-- Enlace de regreso -->
+        <a class="volver"
+           href="{{ .Site.Home.RelPermalink }}#articulos">
+            &larr; Volver a los artículos
+        </a>
+
+        <!-- Cabecera del artículo -->
+        <header class="cabecera-articulo">
+
+            <h1>{{ .Title }}</h1>
+
+            <p class="fecha">
+                Publicado el {{ .Date.Format "02/01/2006" }}
+            </p>
+
+            <p class="descripcion-articulo">
+                {{ .Description }}
+            </p>
+
+        </header>
+
+        <!-- Imagen principal del artículo -->
+        {{ if .Params.image }}
+
+            <img class="imagen-articulo"
+                 src="{{ .Params.image | relURL }}"
+                 alt="{{ .Params.imageAlt }}">
+
+        {{ end }}
+
+        <!-- Contenido del artículo -->
+        <div class="contenido-articulo">
+            {{ .Content }}
+        </div>
+
+        <!-- Navegación inferior -->
+        <a class="boton"
+           href="{{ .Site.Home.RelPermalink }}#articulos">
+            Ver todos los artículos
+        </a>
+
+    </article>
+
+</div>
+
+{{ end }}

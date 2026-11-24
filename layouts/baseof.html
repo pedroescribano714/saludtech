@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Configuración básica de la página -->
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="{{ .Description | default .Site.Params.description }}">
+
+    <meta name="author"
+          content="{{ .Site.Params.author }}">
+
+    <!-- Título dinámico de la página -->
+    <title>
+        {{ if .IsHome }}
+            {{ .Site.Title }} | Tecnologías y Sistemas en Sanidad
+        {{ else }}
+            {{ .Title }} | {{ .Site.Title }}
+        {{ end }}
+    </title>
+
+    <!-- Favicon personalizado -->
+    <link rel="icon"
+          type="image/svg+xml"
+          href="{{ "img/favicon.svg" | relURL }}">
+
+    <!-- Hoja de estilos CSS -->
+    <link rel="stylesheet"
+          href="{{ "css/styles.css" | relURL }}">
+
+</head>
+
+<body>
+
+    <!-- CABECERA DEL BLOG -->
+
+    <header class="cabecera">
+
+        <div class="contenedor">
+
+            <h1>{{ .Site.Title }}</h1>
+
+            <p>Tecnologías y Sistemas en Sanidad</p>
+
+            <!-- MENÚ DE NAVEGACIÓN -->
+
+            <nav aria-label="Navegación principal">
+
+                <ul class="menu">
+
+                    <li>
+                        <a href="{{ .Site.Home.RelPermalink }}">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ "articulos/" | relURL }}">
+                            Artículos
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+
+    <main id="contenido-principal">
+
+        {{ block "main" . }}
+
+        {{ end }}
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer class="pie-pagina">
+
+        <div class="contenedor">
+
+            <p>
+                &copy; {{ now.Year }} {{ .Site.Title }} |
+                Desarrollo de Aplicaciones en Red
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

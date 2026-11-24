@@ -1,0 +1,24 @@
+
+# Archivos generados por Hugo
+/public/
+/resources/_gen/
+/hugo_stats.json
+/.hugo_build.lock
+
+# Configuración local de Visual Studio Code
+/.vscode/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales y registros
+*.tmp
+*.log
+*.bak
+
+# Archivos de configuración con posibles credenciales
+.env
+.env.*
+!.env.example

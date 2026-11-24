@@ -1,0 +1,55 @@
+
+{{ define "main" }}
+
+<section class="seccion-articulos">
+
+    <div class="contenedor">
+
+        <h2>Todos los artículos</h2>
+
+        <div class="grid-articulos">
+
+            {{ range .Pages.ByWeight }}
+
+            <article class="tarjeta">
+
+                <!-- Imagen de la tarjeta -->
+                {{ if .Params.image }}
+
+                    <img class="imagen-tarjeta"
+                         src="{{ .Params.image | relURL }}"
+                         alt="{{ .Params.imageAlt }}"
+                         loading="lazy">
+
+                {{ end }}
+
+                <!-- Contenido de la tarjeta -->
+                <div class="contenido-tarjeta">
+
+                    <p class="fecha">
+                        {{ .Date.Format "02/01/2006" }}
+                    </p>
+
+                    <h3>{{ .Title }}</h3>
+
+                    <p>{{ .Description }}</p>
+
+                    <a class="enlace-articulo"
+                       href="{{ .RelPermalink }}"
+                       aria-label="Leer artículo: {{ .Title }}">
+                        Leer artículo &rarr;
+                    </a>
+
+                </div>
+
+            </article>
+
+            {{ end }}
+
+        </div>
+
+    </div>
+
+</section>
+
+{{ end }}
