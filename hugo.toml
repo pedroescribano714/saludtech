@@ -3,7 +3,6 @@ baseURL = 'https://pedroescribano714.github.io/saludtech/'
 defaultContentLanguage = 'es'
 locale = 'es-ES'
 title = 'SaludTech'
-theme = ''
 
 disableKinds = ['taxonomy', 'term']
 
